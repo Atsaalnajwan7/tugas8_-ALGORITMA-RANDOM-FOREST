@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Penyakit Jantung</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f0f4f8; }
+        .card { border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .btn-primary { background-color: #e74c3c; border-color: #e74c3c; }
+        .btn-primary:hover { background-color: #c0392b; }
+    </style>
+</head>
+<body>
+<div class="container py-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-danger">❤️ Prediksi Risiko Penyakit Jantung</h2>
+        <p class="text-muted">Menggunakan Algoritma Random Forest</p>
+    </div>
+    <div class="card p-4">
+        <form action="/predict" method="POST">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Usia (tahun)</label>
+                    <input type="number" name="age" class="form-control" placeholder="cth: 45" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Jenis Kelamin</label>
+                    <select name="sex" class="form-select" required>
+                        <option value="1">Laki-laki</option>
+                        <option value="0">Perempuan</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Tipe Nyeri Dada (cp)</label>
+                    <select name="cp" class="form-select" required>
+                        <option value="0">0 - Typical Angina</option>
+                        <option value="1">1 - Atypical Angina</option>
+                        <option value="2">2 - Non-anginal Pain</option>
+                        <option value="3">3 - Asymptomatic</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Tekanan Darah Istirahat (trestbps)</label>
+                    <input type="number" name="trestbps" class="form-control" placeholder="cth: 120" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Kolesterol (chol) mg/dl</label>
+                    <input type="number" name="chol" class="form-control" placeholder="cth: 200" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Gula Darah Puasa > 120 mg/dl (fbs)</label>
+                    <select name="fbs" class="form-select" required>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Hasil EKG Istirahat (restecg)</label>
+                    <select name="restecg" class="form-select" required>
+                        <option value="0">0 - Normal</option>
+                        <option value="1">1 - ST-T Abnormality</option>
+                        <option value="2">2 - Left Ventricular Hypertrophy</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Detak Jantung Maksimum (thalach)</label>
+                    <input type="number" name="thalach" class="form-control" placeholder="cth: 150" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Angina saat Olahraga (exang)</label>
+                    <select name="exang" class="form-select" required>
+                        <option value="1">Ya</option>
+                        <option value="0">Tidak</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">ST Depression (oldpeak)</label>
+                    <input type="number" step="0.1" name="oldpeak" class="form-control" placeholder="cth: 1.5" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Slope ST (slope)</label>
+                    <select name="slope" class="form-select" required>
+                        <option value="0">0 - Upsloping</option>
+                        <option value="1">1 - Flat</option>
+                        <option value="2">2 - Downsloping</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Jumlah Pembuluh (ca)</label>
+                    <select name="ca" class="form-select" required>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label fw-semibold">Thal</label>
+                    <select name="thal" class="form-select" required>
+                        <option value="1">1 - Normal</option>
+                        <option value="2">2 - Fixed Defect</option>
+                        <option value="3">3 - Reversible Defect</option>
+                    </select>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-lg px-5">🔍 Prediksi Sekarang</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
